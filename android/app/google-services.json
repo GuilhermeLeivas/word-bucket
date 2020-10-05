@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "777419339292",
+    "firebase_url": "https://word-bucket-a9928.firebaseio.com",
+    "project_id": "word-bucket-a9928",
+    "storage_bucket": "word-bucket-a9928.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777419339292:android:0acaec7bf31626d8b1d1d9",
+        "android_client_info": {
+          "package_name": "br.com.mertins.leivas.word_bucket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777419339292-r001b15r5rre6i56qk0qq8s2sqt55bah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB60sktePfkFM3DwwuiEq-VCkFq2h1uEpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777419339292-r001b15r5rre6i56qk0qq8s2sqt55bah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
