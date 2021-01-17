@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:word_bucket/components/input_fields.dart';
 import 'package:word_bucket/components/word_bucket_loading_component.dart';
 import 'package:word_bucket/services/auth.dart';
-import 'package:word_bucket/services/database.dart';
+import 'package:word_bucket/services/database_service.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -16,6 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _inputEmail = TextEditingController();
   final _inputPassword = TextEditingController();
+  final _inputUserName = TextEditingController();
 
   String error = '';
   bool isLoading = false;
@@ -55,6 +56,12 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                       WordBucketInputField(
+                        labelText: 'Username',
+                        hintText: 'Digite seu novo UserName',
+                        hideCharacters: false,
+                        inputController: _inputUserName,
+                      ),
+                      WordBucketInputField(
                         labelText: 'Email',
                         hintText: 'Digite seu email',
                         hideCharacters: false,
@@ -75,7 +82,7 @@ class _RegisterState extends State<Register> {
                                 await _authService.registerWithEmailAndPassword(
                                     _inputEmail.text, _inputPassword.text);
                             _verifyUserIntegrity(result);
-                            _createUserData(result);
+                            _createUserData(result, _inputUserName.text);
                           }
                         },
                       ),
@@ -106,7 +113,7 @@ class _RegisterState extends State<Register> {
     }
   }
 
-  void _createUserData(dynamic result) {
-    DatabaseService(uid: result.uid).updateUserData();
+  void _createUserData(dynamic result, String userName) {
+    DatabaseService(uid: result.uid).createUserData(result,userName);
   }
 }

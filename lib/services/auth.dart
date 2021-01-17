@@ -18,10 +18,11 @@ class AuthService {
   }
 
 //sign in with email & password
-  Future<UserWordBucket> signInWithEmailAndPassword(String email, String password) async {
-
+  Future<UserWordBucket> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
-      UserCredential userCredential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
       return _userFromFirebaseUser(userCredential.user);
     } catch (e) {
       print(e);
@@ -30,10 +31,11 @@ class AuthService {
   }
 
 // register with email & password
-  Future<UserWordBucket> registerWithEmailAndPassword(String email, String password) async {
-
+  Future<UserWordBucket> registerWithEmailAndPassword(
+      String email, String password) async {
     try {
-      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
       return _userFromFirebaseUser(userCredential.user);
     } catch (e) {
       print(e);
@@ -53,7 +55,13 @@ class AuthService {
 
   // Criamos um usuario customizado apartir do FirbaseUser
   UserWordBucket _userFromFirebaseUser(User user) {
-    return user != null ? UserWordBucket(uid: user.uid, email: user.email) : null;
+    return user != null
+        ? UserWordBucket(
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+          )
+        : null;
   }
 
   Stream<UserWordBucket> get user {
@@ -63,5 +71,14 @@ class AuthService {
         .authStateChanges()
         .map((user) => _userFromFirebaseUser(user));
     // Alem de pegarmos o estado, mudamos nossa stream de FirebaseUser para nosso User customizado.
+  }
+
+  void updateUserProfile(String displayName) {
+    print('Tentando mudar displayname');
+
+    User loggedUser = _firebaseAuth.currentUser;
+    loggedUser.updateProfile(
+      displayName: displayName,
+    );
   }
 }

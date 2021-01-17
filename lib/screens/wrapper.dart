@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:word_bucket/model/user_word_bucket.dart';
 import 'package:word_bucket/screens/auth/authenticate.dart';
-import 'package:word_bucket/screens/home/word_bucket_dashoboard.dart';
+import 'file:///C:/Users/Murphy/IdeaProjects/Flutter%20projects/word_bucket/lib/screens/dashboard/word_bucket_dashoboard.dart';
 
 class Wrapper extends StatelessWidget {
   // Este wiget fica responsavel por detectar se o usuario esta logado ou nao, dependendo da resposta ele manda ou para HOME ou para tela de login

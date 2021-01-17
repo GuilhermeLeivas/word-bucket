@@ -4,17 +4,16 @@ import 'package:word_bucket/components/word_bucket_loading_component.dart';
 import 'package:word_bucket/model/dados_usuario.dart';
 import 'package:word_bucket/model/user_word_bucket.dart';
 import 'package:word_bucket/model/word.dart';
-import 'package:word_bucket/services/database.dart';
+import 'package:word_bucket/services/database_service.dart';
 
 class WordsListPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final usuarioLogado = Provider.of<UserWordBucket>(context);
 
+    bool isSearching = false;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Suas palavras salvas'),
-      ),
       body: StreamBuilder<DadosUsuario>(
           stream: DatabaseService(uid: usuarioLogado.uid).userDocument,
           builder: (context, snapshot) {
@@ -25,6 +24,14 @@ class WordsListPanel extends StatelessWidget {
             }
             return WordBucketLoadingComponent();
           }),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.search,
+        ),
+        onPressed: () {
+          print('Teste');
+        },
+      ),
     );
   }
 }

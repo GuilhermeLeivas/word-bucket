@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:word_bucket/screens/wrapper.dart';
 import 'package:word_bucket/services/auth.dart';
+import 'package:word_bucket/services/database_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
